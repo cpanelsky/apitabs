@@ -1,5 +1,5 @@
 # apitabs
-documentation Tab Completion for cPanel cpapi2, uapi, and whmapi1 command line interfaces
+Provides documentation links and module/function nmes via Tab Completion for cPanel cpapi2, uapi, and whmapi1 command line interfaces
 
 Manual setup can be performed as noted on the original forums post :
 
