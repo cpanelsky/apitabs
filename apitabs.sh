@@ -9,7 +9,7 @@ touch /etc/bash_completion.d/cpanelcpapi2.bash
 touch /etc/bash_completion.d/cpanelwhmapi1.bash
 touch /etc/bash_completion.d/cpaneluapi.bash
 
-#remote any old files, maybe new API funcs?
+#remove any old files, maybe new API funcs?
 rm -fv /root/.cpanel/*api*.list
 rm -fv /etc/bash_completion.d/cpanel*api*.bash
 
