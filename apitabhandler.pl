@@ -28,7 +28,7 @@ sub doUAPI {
                 if ( $line =~ m/^$cur$/ ) {
                     my ( $moduleref, $funcref ) = split /-/, $cur;
                     print
-"$moduleref $funcref # https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+$moduleref%3A%3A$funcref\n";
+"$moduleref $funcref --user=$userName # https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+$moduleref%3A%3A$funcref\n";
                 }
                 else {
                     if ( $cur != ~m/^\s$/ ) {
@@ -51,7 +51,7 @@ sub doCPAPI2 {
                 if ( $line =~ m/^$cur$/ ) {
                     my ( $moduleref, $funcref ) = split /-/, $cur;
                     print
-"$moduleref $funcref # https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+$moduleref%3A%3A$funcref\n";
+"$moduleref $funcref --user=$userName# https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+$moduleref%3A%3A$funcref\n";
                 }
                 else {
                     if ( $cur != ~m/^\s$/ ) {
