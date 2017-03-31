@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#setup API tab completion
+#setup API tab completion - https://forums.cpanel.net/threads/tab-completion-for-the-api.596967/
 
 touch /etc/bash_completion
 cp -iav /etc/bash_completion{,.cpanel_backup.$(date +'%s')}
