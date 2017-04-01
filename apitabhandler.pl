@@ -38,12 +38,12 @@ sub doTabApi {
                             print "$cur" . $docsURL . "$cur";
 			  }
                         }  else {
-                            $cur =~ s/-/ /;
-                          if ( $fullLine =~ /^$cur.*/ ) {
-                          chomp($fullLine);
-			                    $cur =~ s/ /%3A%3A/;
-                          print " --user=\$userName $fullLine" . $docsURL . "$cur";
-                                        }
+                           $cur =~ s/-/ /;
+                           if ( $fullLine =~ /^$cur.*/ ) {
+                           chomp($fullLine);
+			   $cur =~ s/ /%3A%3A/;
+                           print " --user=\$userName $fullLine" . $docsURL . "$cur";
+                              }
                           }
                      }
                 }
