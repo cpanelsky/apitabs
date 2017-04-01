@@ -10,17 +10,14 @@ foreach my $arg (@ARGV) { $args = $args . " " . $arg; }
 my $apiFullList = "/root/.cpanel/fullset" . $apiTabbed . ".list";
 
 if ( $apiTabbed =~ "uapi" ) {
-    $docsURL =
-"  ## Documentation -> https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+";
+    $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+";
 }
 else {
     if ( $apiTabbed =~ "cpapi2" ) {
-        $docsURL =
-"  ## Documentation -> https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+";
+        $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+";
     }
     else {
-        $docsURL =
-"  ## Documentation -> https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+";
+        $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+";
     }
 }
 
