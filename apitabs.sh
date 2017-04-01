@@ -14,14 +14,18 @@ wget --verbose -O /root/.cpanel/fullsetuapi.list https://raw.githubusercontent.c
 wget --verbose -O /root/.cpanel/fullsetwhmapi1.list https://raw.githubusercontent.com/cpanelsky/apitabs/master/fullsetwhmapi1.list
 wget --verbose -O /usr/bin/apitabhandler.pl https://raw.githubusercontent.com/cpanelsky/apitabs/master/apitabhandler.pl
 chmod +x /usr/bin/apitabhandler.pl
-
 echo -e ". /etc/bash_completion.d/cpanelcpapi2.bash" >>  /etc/bash_completion
 echo -e ". /etc/bash_completion.d/cpanelwhmapi1.bash" >>  /etc/bash_completion
 echo -e ". /etc/bash_completion.d/cpaneluapi.bash" >>  /etc/bash_completion
 
-echo -e 'if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi' >> /root/.bashrc
+
+if ! grep -q bash_completion  /root/.bashrc  
+  then 
+  echo -e '  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+      . /etc/bash_completion
+  fi' >> /root/.bashrc
+fi
+  
 
 echo -e '_whmapi1()
 {
