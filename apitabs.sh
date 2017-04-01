@@ -4,17 +4,16 @@
 touch /etc/bash_completion
 cp -iav /etc/bash_completion{,.cpanel_backup.$(date +'%s')}
 echo > /etc/bash_completion
+rm -fv /root/.cpanel/*api*.list
+rm -fv /etc/bash_completion.d/cpanel*api*.bash
 touch /etc/bash_completion.d/cpanelcpapi2.bash
 touch /etc/bash_completion.d/cpanelwhmapi1.bash
 touch /etc/bash_completion.d/cpaneluapi.bash
-wget --verbose -O /usr/bin/apitabhandler.pl https://raw.githubusercontent.com/cpanelsky/apitabs/master/apitabhandler.pl
-chmod +x /usr/bin/apitabhandler.pl
 wget --verbose -O /root/.cpanel/fullsetcpapi2.list https://raw.githubusercontent.com/cpanelsky/apitabs/master/fullsetcpapi2.list
 wget --verbose -O /root/.cpanel/fullsetuapi.list https://raw.githubusercontent.com/cpanelsky/apitabs/master/fullsetuapi.list
 wget --verbose -O /root/.cpanel/fullsetwhmapi1.list https://raw.githubusercontent.com/cpanelsky/apitabs/master/fullsetwhmapi1.list
-rm -fv /root/.cpanel/*api*.list
-rm -fv /etc/bash_completion.d/cpanel*api*.bash
-
+wget --verbose -O /usr/bin/apitabhandler.pl https://raw.githubusercontent.com/cpanelsky/apitabs/master/apitabhandler.pl
+chmod +x /usr/bin/apitabhandler.pl
 
 echo -e ". /etc/bash_completion.d/cpanelcpapi2.bash" >>  /etc/bash_completion
 echo -e ". /etc/bash_completion.d/cpanelwhmapi1.bash" >>  /etc/bash_completion
