@@ -1,0 +1,292 @@
+Backup list_backups
+Bandwidth get_retention_periods
+Bandwidth query grouping=domain%7Cyear interval=daily protocols=http%7Cimap%7Csmtp timezone=America%2FChicago
+Batch strict command-0=%5B%22SSH%5C%22%2C%22get_port%5C%22%2C%7B%7D%5D command-1=%5B%22PasswdStrength%22%2C%22get_required_strength%22%2C%7B%22app%22%3A%22webdisk%22%7D%5D 
+Brand read
+Branding file file=local.css needfile=0 skipdefault=0 checkmain=1 nomagic=1
+Branding get_application_information app_key=boxtrapper
+Branding get_applications app_keys=addon_domains,ftp_accounts,anonymous_ftp
+Branding get_available_applications
+Branding get_information_for_applications docroot=\/usr\/local\/cpanel\/base\/webmail\/paper_lantern app_keys=email_filters 
+Branding image imagefile=image needfile=0 nomagic=0 reqext=.png skip_logo_check=0
+uapi  Branding include file=dynamiccontent.html skipdefault=0 raw=0 
+Branding spritelist img=getstart image=getstart imgtype=icon method=skip_filetype_gif subtype=img
+CacheBuster read
+CacheBuster update
+Chkservd get_exim_ports
+Chkservd get_exim_ports_ssl
+Chrome get_dom page_title=Test
+Contactus is_enabled
+DAV disable_shared_global_addressbook name=user
+DAV enable_shared_global_addressbook name=user
+DAV get_calendar_contacts_config user=example
+DAV has_shared_global_addressbook name=user
+DAV is_dav_service_enabled
+DAV is_horde_enabled
+DCV check_domains_via_http domain-1=example1.com domain-2=example2.com domain-3=example3.com
+DCV ensure_domains_can_pass_dcv domain-1=example1.com domain-2=example2.com domain-3=example3.com
+DNS ensure_domains_reside_only_locally domain-1=example1.com domain-2=example2.com domain-3=example3.com
+DNSSEC disable_dnssec domain=example.com
+DNSSEC enable_dnssec domain=example.com 
+DNSSEC fetch_ds_records domain=example.com 
+DNSSEC set_nsec3 domain=example.com use_nsec3=1 nsec3_opt_out=0 nsec3_iterations=7 nsec3_narrow=1 nsec3_salt=1A2B3C4D5E6F
+DNSSEC unset_nsec3 domain=example.com
+DomainInfo domains_data format=hash
+DomainInfo list_domains
+DomainInfo domains format=hash
+DomainInfo single_domain_data domain=example.com
+Email add_auto_responder email=user from=&quot;User Name&quot; subject=&quot;Autoresponder Subject&quot; body=&quot;This is an autoresponder message.&quot; domain=example.com is_html=1 interval=24 start=1410277881 stop=1410300000
+Email add_domain_forwarder domain=example.com destdomain=forwardtome.com
+Email add_forwarder domain=example.com email=user%40example.com fwdopt=fwd fwdemail=fwdtome%40example.com
+Email add_list list=newlist password=12345luggage domain=example.com
+Email add_mailman_delegates list=mylist delegates=user%40example.com%2Cadmin%40example.com
+Email add_mx domain=example.com exchanger=mail.example.com preference=5 alwaysaccept=1
+Email add_pop email=user password=12345luggage quota=0 domain=example.com skip_update_db=1
+Email add_spam_filter required_score=8.0
+Email browse_mailbox dir=mail%2Fexample.com
+Email change_mx domain=example.com exchanger=mail.example.com oldexchanger=mail.example.com preference=15 oldpreference=5 alwaysaccept=local
+Email check_fastmail
+Email check_pipe_forwarder pipe_name=script.pl
+Email delete_auto_responder email=user%40example.com
+Email delete_domain_forwarder domain=example.com
+Email delete_filter account=user@example.com filtername=coffee
+Email delete_forwarder address=user%40example.com forwarder=fwdtome%40example.com
+Email delete_list list=mylist
+Email delete_mx domain=example.com exchanger=mail.example.com preference=15
+Email delete_pop email=user domain=example.com
+Email disable_filter account=user%40example.com filtername=coffee
+Email disable_spam_assassin
+Email disable_spam_autodelete
+Email dispatch_client_settings to=user@example.com account=newuser@example.com
+Email edit_pop_quota email=user quota=0 domain=example.com
+Email enable_filter account=user%40example.com filtername=coffee
+Email enable_spam_assassin
+Email fetch_charmaps
+Email generate_mailman_otp list=mylist
+Email get_auto_responder email=user%40example.com
+Email get_charsets
+Email get_client_settings account=newuser@example.com
+Email get_default_email_quota
+Email get_disk_usage 
+Email get_filter account=user%40example.com filtername=coffee
+Email get_mailman_delegates list=mylist
+Email get_main_account_disk_usage
+Email get_max_email_quota
+Email get_max_email_quota_mib
+Email get_pop_quota email=user
+Email get_spam_settings
+Email get_webmail_settings account=user@example.com
+Email has_delegated_mailman_lists delegate=user%40example.com
+Email has_plaintext_authentication
+Email list_auto_responders domain=example.com
+Email list_default_address domain=example.com
+Email list_domain_forwarders domain=example.com
+Email list_filters account=user%40example.com
+Email list_filters_backups
+Email list_forwarders domain=example.com
+Email list_forwarders_backups
+Email list_lists domain=example.com
+Email list_mail_domains select=example.com
+Email list_mxs domain=example.com
+Email list_pops regex=user
+Email list_pops_with_disk domain=example.com maxaccounts=500 no_validate=1 regex=/^[a-z0-9_-]{6,18}$/ email=user%40example.com infinitylang=0
+Email list_system_filter_info
+Email passwd_list list=mylist password=12345luggage
+Email passwd_pop email=user password=12345luggage domain=example.com
+Email remove_mailman_delegates list=mylist delegates=user%40example.com%2Cadmin%40example.com
+Email reorder_filters mailbox=user%40example.com filter0=coffee filter1=cheesecloth filter2=oil
+Email set_always_accept domain=example.com mxcheck=auto alwaysaccept=1
+Email set_list_privacy_options list=mylist advertised=1 archive_private=1 subscribe_policy=1
+Email store_filter filtername=coffee account=user%40example.com action1=deliver dest1=cheesecloth%40example.com part1=\$header_subject: match1=contains val1=curds opt1=or part2=\$message_body match2=is val2=whey
+Email suspend_incoming email=user%40example.com
+Email suspend_login email=user%40example.com
+Email trace_filter account=user%40example.com msg=Test
+Email unsuspend_incoming email=user%40example.com
+Email unsuspend_login email=user%40example.com
+Email verify_password email=skroob%40spaceballs.com password=12345luggage
+ExternalAuthentication add_authn_link username=example provider_id=google subject_unique_identifier=123456789012345678901 preferred_username=Example
+ExternalAuthentication configured_modules
+ExternalAuthentication get_authn_links
+ExternalAuthentication remove_authn_link provider=cpanelid subject_unique_identifier=123456789012345678901
+Features has_feature name=fantastico
+Features list_features
+Fileman autocompletedir path=public dirs_only=1 list_all=0
+Fileman empty_trash older_than=31
+Fileman get_file_content dir=%2Fhome%2Fusername%2Fpublic_html file=example.html charset=utf-8 from_charset=_DETECT_ to_charset=_LOCALE_
+Fileman get_file_information path=public_html show_hidden=0 check_for_leaf_directories=1 include_mime=1 include_hash=1 include_permissions=1
+Fileman list_files dir=public_html types=dir%7Cfile limit_to_list=0 show_hidden=1 check_for_leaf_directories=1 include_mime=1 include_hash=1 include_permissions=0
+Fileman save_file_content dir=/home/username/public_html file=example.html from_charset=utf-8 to_charset=utf-8 content=&quot;hi&quot; fallback=0
+Fileman transcode from_charset=utf-8 to_charset=us-ascii content=\&quot;hi\&quot; discard_illegal=1 transliterate=1
+Fileman upload_files dir=%2Fhome%2Fusername%2Fpublic_html file-1=example.html file-2=rankand.html
+Ftp add_ftp user=weeones pass=12345luggage quota=42
+Ftp allows_anonymous_ftp 
+Ftp allows_anonymous_ftp_incoming 
+Ftp delete_ftp user=weeones destroy=1
+Ftp ftp_exists user=us_chickens
+Ftp get_ftp_daemon_info
+Ftp get_port
+Ftp get_quota user=weeones
+Ftp get_welcome_message
+Ftp kill_session login=weeones
+Ftp list_ftp
+Ftp list_ftp_with_disk
+Ftp list_sessions
+Ftp passwd user=ftpaccount pass=12345luggage
+Ftp server_name
+Ftp set_anonymous_ftp set=0
+Ftp set_anonymous_ftp_incoming set=0
+Ftp set_homedir user=example1 domain=example.com homedir=example1/
+Ftp set_quota user=ftpaccount quota=500
+Ftp set_welcome_message message='Greetings, Professor Falken.'
+Integration fetch_url app=applicationname
+LangPHP php_get_impacted_domains system_default=1 domain=example.com
+LangPHP php_get_installed_versions
+LangPHP php_get_system_default_version
+LangPHP php_get_vhost_versions
+LangPHP php_ini_get_user_basic_directives type=vhost vhost=clearly.com
+LangPHP php_ini_get_user_content type=vhost vhost=clearly.com
+LangPHP php_ini_get_user_paths
+LangPHP php_ini_set_user_basic_directives type=vhost directive-1=allow_url_fopen%3A0 directive-2=upload_max_filesize%3A4M vhost=clearly.com
+LangPHP php_ini_set_user_content type=vhost vhost=clearly.com content=%5BPHP%5D%0D%0A%3B+About+php.ini%0D%0A%3B+php.ini+is+responsible+for+configuring+many+of+the+aspects+of+PHP%27s+behavior.%0D%0Apcre.backtrack_limit%3D100000
+LangPHP php_set_vhost_versions vhost=blammo.com vhost-1=failed.com version=ea-php55
+Locale get_attributes
+Market cancel_pending_ssl_certificate provider=cPStore order_item_id=8675309
+Market set_status_of_pending_queue_items provider=cPStore access_token=1a676e6f-99fc-11e6-9ab6-e60a769b73bc url_after_checkout=http:\/\/www.example.com\/thenextplace item-1='{&quot;product_id&quot;:123456,&quot;order_item_id&quot;:1,&quot;description&quot;:&quot;Thing 1&quot;,&quot;price&quot;:9}' item-2='{&quot;product_id&quot;:123457,&quot;order_item_id&quot;:2,&quot;description&quot;:&quot;Thing 2&quot;,&quot;price&quot;:8}'
+Market get_all_products
+Market get_login_url provider=cPStore url_after_login=http%3A%2F%2Fhostname.example.com%2Fredirectionlocation.cgi%3Fstate
+Market get_pending_ssl_certificates provider=cPStore
+Market get_provider_specific_dcv_constraints provider=cPStore
+Market get_providers_list
+Market get_ssl_certificate_if_available provider=cPStore order_item_id=8675309
+Market process_ssl_pending_queue
+Market request_ssl_certificates provider=cPStore access_token=725431a1-d5bc-11e5-a28b-8b0e09a93f05 certificate={&quot;product_id&quot;:143,&quot;subject_names&quot;:[[&quot;dNSName&quot;,&quot;example.com&quot;],[&quot;dNSName&quot;,&quot;example.org&quot;]],&quot;vhost_names&quot;:[&quot;example.com&quot;],&quot;price&quot;:6,&quot;validity_period&quot;:[1,&quot;year&quot;]} certificate={&quot;product_id&quot;:&quot;176&quot;,&quot;subject_names&quot;:[[&quot;dNSName&quot;,&quot;test.example.com&quot;]],&quot;vhost_names&quot;:[&quot;test.example.com&quot;],&quot;price&quot;:3,&quot;validity_period&quot;:[1,&quot;year&quot;],,}&amp;provider=cPStore
+Market set_status_of_pending_queue_items provider=cPStore order_item_id=8675309 status=confirmed
+Market set_url_after_checkout provider=cPStore access_token=725431a1-d5bc-11e5-a28b-8b0e09a93f05 order_id=12345 url_after_checkout=http%3A%2F%2Fcheckout.example.com
+Market validate_login_token provider=cPStore login_token=8675309 url_after_login=http%3A%2F%2Fhostname.example.com%2Fredirectionlocation.cgi%3Fstate
+Mime add_handler extension=.foo handler=text-foo
+add_hotlink urls=http%3A%2F%2Fexample.com%2F extensions=foo allow_null=1 redirect_url=http%3A%2F%2Fredirect.example.com%2F
+Mime add_mime type=text%2Ffoo extension=.foo
+Mime add_redirect domain=example.com src=http%3A%5C%2F%5C%2Fexample.com%5C%2Fspecified-page redirect=http%3A%2F%2Fexample.com%2F type=permanent redirect_wildcard=1 redirect_www=0
+Mime delete_handler extension=.foo
+Mime delete_hotlink
+Mime delete_mime type=text%2Ffoo
+Mime delete_redirect domain=example.com src=redirectpage.html docroot=%5C%2Fhome%5C%2Fexample%5C%2Fpublic_html%5C%2F
+Mime list_handlers type=user
+Mime list_hotlinks
+Mime list_mime type=user
+Mime list_redirects
+Mime redirect_info url=http%3A%2F%2Fredirect.example.com domain=example.com 
+ModSecurity disable_all_domains
+ModSecurity disable_domains domains=example.com%2Cdallas.example.com%2Cgalveston.example.com
+ModSecurity enable_all_domains 
+ModSecurity enable_domains domains=example.com%2Cdallas.example.com%2Cgalveston.example.com
+ModSecurity has_modsecurity_installed
+ModSecurity list_domains
+Mysql add_host host=remote.example.com
+Mysql check_database name=example_test
+Mysql create_database name=newdb
+Mysql create_user name=dbuser password=12345luggage
+Mysql delete_database name=example
+Mysql delete_host host=remote.example.com
+Mysql delete_user name=example
+Mysql get_privileges_on_database user=dbuser database=mydb
+Mysql get_restrictions 
+Mysql get_server_information
+Mysql locate_server
+Mysql rename_database oldname=mydb newname=newlyrenamed
+Mysql rename_user oldname=dbuser newname=mynewusername
+--uapi -- Mysql repair_database name=example_test
+Mysql revoke_access_to_database user=dbuser database=mydb
+Mysql set_password user=dbuser password=12345luggage
+Mysql set_privileges_on_database user=dbuser database=mydb privileges=DELETE,UPDATE,CREATE,ALTER
+NVData get names=testfile
+NVData set names=testfile1%7Ctestfile2 testfile1=some_data testfile2=more_data
+Notifications get_notifications_count
+Parser firstfile_relative_uri
+PasswdStrength get_required_strength app=webdisk
+Postgresql create_database name=database
+Postgresql create_user name=dbuser password=12345luggage
+Postgresql delete_database name=database
+Postgresql get_restrictions
+Postgresql grant_all_privileges user=example_dbuser database=example_database
+Postgresql rename_database oldname=database newname=database2
+Postgresql rename_user oldname=dbuser newname-dbuser2 password=12345luggage
+Postgresql rename_user_no_password oldname=dbuser newname=dbuser2
+Postgresql revoke_all_privileges user=example_dbuser database=example_database
+Postgresql set_password name=dbuser password=12345luggage
+Pushbullet send_test_message access_token=a1b2c3d4e5f6g7h8i9j0
+Quota get_quota_info
+Resellers list_accounts
+SSH get_port
+SSL check_shared_cert
+SSL delete_cert friendly_name=TestCert
+SSL delete_csr friendly_name=TestCSR
+SSL delete_key friendlyname=TestCSR
+SSL delete_ssl domain=example.com
+SSL disable_mail_sni domains=example.com%7Cexample1.com%7Cexample2.com
+SSL enable_mail_sni domains=example.com%7Cexample1.com%7Cexample2.com
+SSL fetch_best_for_domain domain=example.com
+SSL fetch_cert_info friendly_name=TestCert
+SSL fetch_key_and_cabundle_for_certificate certificate=-----BEGIN CERTIFICATE--MIIDcTCCAlmgAwIBAgIFAU+BNVgwDQYJKoZIhvcNAQEFBQAwUTESMBAGA1UEAwwJc2lza28udGxkMQswCQYDVQQGEwJVUzEPMA0GA1UECgwGY1BhbmVsMQswCQYDVQQIDAJUWDEQMA4GA1UEBwwHSG91c3RvbjAeFw0xNDEwMDYyMjI2MTlaFw0xNTEwMDYyMjI2MTlaMFExEjAQBgNVBAMMCXNpc2tvLnRsZDELMAkGA1UEBhMCVVMxDzANBgNVBAoMBmNQYW5lbDELMAkGA1UECAwCVFgxEDAOBgNVBAcMB0hvdXN0b24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9zx6zGiHdmWA0dKtoXmJiWXpZ9E3PXx3YHsjFEWW7e5pH0vZ+jVMzDmm5nsJ7RXrAkZO1IvpIpVLvoQfiJOWVvkD+o9fWvoK1tWJS72FSgPju+58mA2ieBuc87A790Pzuv1P3NR3zFLAjUR99zkHR1fpri/daM3PBWO8ET48FWkyU1kOeZaUlF67/+wrEiNgg+t1qhKOCAB61PdNVkLaSGHimksuC+Czk8Kq9nuS0E0TCnDtjjEyJ455FUcaCfczlTb8xkB/F9ORe74yTzD+vlk0tFMG6PLj/ajIwWqwO0qmQ8wX3NRxkWgGz5kVO1wrVJarKQ5EYQ3/mgvit0v6dAgMBAAGjUDBOMB0GA1UdDgQWBBRw+wKBo34+bgexjAa3EMDsgSCd7zAfBgNVHSMEGDAWgBRw+wKBo34+bgexjAa3EMDsgSCd7zAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4IBAQCHRXIs53opzKM2rM8Qe8lcw524WK6hqy2EWrZHp78N7rU7/6DQ/I3hv3WhcDDIO04I2/Xhe88MLBaLoM367Ya+vy7CaLr14aLi/SfQszMA0ALBvMao+Fis0iVwFYq/NLgSXw+fgnpFskt8v8iQZ+4Kaal8U8e9sVgu8m0RgO7rzym1eRiIKpsKd1rh/SD7LbSN7M7TRL3QqF7ltw9sQhAAsQcRaBBF21pdWrqhiGZ+Eioo3hhgwNavH2agqz78ddHwrFpHFwrEeUk1OfpPb76MYIce7xIy/4oQNdg6fOq4l/FrajBv+WkzDVPaKm6r7YmwfLN/YMZBHXSR58oOGP9W------END CERTIFICATE-----
+SSL find_csrs_for_key friendly_name=TestKey
+SSL generate_cert domains=example.com countryName=US stateOrProvinceName=TX localityName=Houston organizationName=Organization organlizationalUnitName=Department emailAddress=user%40example.com key_id=example_com_a74f7_9dddf_1446659822_eae1ff43c4ec1991e195877c55755eff&amp;friendly_name=TestCert
+SSL generate_csr domains=example.com pass=12345luggage countryName=US stateOrProvinceName=Texas localityName=Houston organizationName=Organization organizationalUnitName=Department emailAddress=user%40example.com key_id=example_com_a74f7_9dddf_1446659822_eae1ff43c4ec1991e195877c55755eff friendly_name=TestCSR
+SSL generate_key friendly_name=TestKey keysize=2048
+SSL get_cabundle cert=-----BEGIN CERTIFICATE-----\r\nMIIDcTCCAlmgAwIBAgIFAU+BNVgwDQYJKoZIhvcNAQEFBQAwUTESMBAGA1UEAwwJ\r\nc2lza28udGxkMQswCQYDVQQGEwJVUzEPMA0GA1UECgwGY1BhbmVsMQswCQYDVQQI\r\nDAJUWDEQMA4GA1UEBwwHSG91c3RvbjAeFw0xNDEwMDYyMjI2MTlaFw0xNTEwMDYy\r\nMjI2MTlaMFExEjAQBgNVBAMMCXNpc2tvLnRsZDELMAkGA1UEBhMCVVMxDzANBgNV\r\nBAoMBmNQYW5lbDELMAkGA1UECAwCVFgxEDAOBgNVBAcMB0hvdXN0b24wggEiMA0G\r\nCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9zx6zGiHdmWA0dKtoXmJiWXpZ9E3P\r\nXx3YHsjFEWW7e5pH0vZ+jVMzDmm5nsJ7RXrAkZO1IvpIpVLvoQfiJOWVvkD+o9fW\r\nvoK1tWJS72FSgPju+58mA2ieBuc87A790Pzuv1P3NR3zFLAjUR99zkHR1fpri/da\r\nM3PBWO8ET48FWkyU1kOeZaUlF67/+wrEiNgg+t1qhKOCAB61PdNVkLaSGHimksuC\r\n+Czk8Kq9nuS0E0TCnDtjjEyJ455FUcaCfczlTb8xkB/F9ORe74yTzD+vlk0tFMG6\r\nPLj/ajIwWqwO0qmQ8wX3NRxkWgGz5kVO1wrVJarKQ5EYQ3/mgvit0v6dAgMBAAGj\r\nUDBOMB0GA1UdDgQWBBRw+wKBo34+bgexjAa3EMDsgSCd7zAfBgNVHSMEGDAWgBRw\r\n+wKBo34+bgexjAa3EMDsgSCd7zAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUA\r\nA4IBAQCHRXIs53opzKM2rM8Qe8lcw524WK6hqy2EWrZHp78N7rU7/6DQ/I3hv3Wh\r\ncDDIO04I2/Xhe88MLBaLoM367Ya+vy7CaLr14aLi/SfQszMA0ALBvMao+Fis0iVw\r\nFYq/NLgSXw+fgnpFskt8v8iQZ+4Kaal8U8e9sVgu8m0RgO7rzym1eRiIKpsKd1rh\r\n/SD7LbSN7M7TRL3QqF7ltw9sQhAAsQcRaBBF21pdWrqhiGZ+Eioo3hhgwNavH2ag\r\nqz78ddHwrFpHFwrEeUk1OfpPb76MYIce7xIy/4oQNdg6fOq4l/FrajBv+WkzDVPa\r\nKm6r7YmwfLN/YMZBHXSR58oOGP9W\r\n-----END CERTIFICATE-----
+SSL get_cn_name domain=example.com service=cpanel
+SSL install_ssl domain=example.com cert=THECERTIFICATETEXT key=THEKEYTEXT cabundle=THECABUNDLETEXT
+SSL installed_host domain=example.com
+SSL installed_hosts
+SSL is_mail_sni_supported
+SSL is_sni_supported
+SSL list_certs
+SSL list_csrs
+SSL list_keys
+SSL list_ssl_items domains=example.com%7Cexample1.com%7Cexample2.com items=key%7Ccrt%7Ccsr
+SSL mail_sni_status domain=example.com
+SSL rebuild_mail_sni_config reload_dovecot=1
+SSL rebuildssldb
+SSL set_cert_friendly_name friendly_name=TestCert new_friendly_name=TestCert2
+SSL ser_csr_friendly_name friendly_name=TestCSR new_friendly_name=TestCSR2
+SSL set_key_friendly_name friendly_name=TestKey new_friendly_name=TestKey2
+SSL set_primary_ssl servername=hostname.example.com
+SSL set_ssl_share enable=1
+SSL show_cert friendly_name=TestCert
+SSL show_csr friendly_name=TestCSR
+SSL show_key friendly_name=TestKey
+Session create_temp_user
+SiteTemplates list_site_templates
+SiteTemplates list_user_settings
+SiteTemplates publish target=%2Fhome%2Fexample%2Fpublic_html source=%2Fusr%2Flocal%2Fcpanel%2Fetc%2Fsite_templates%2Funder_construction sitename='My Website' description='I have a website now.'
+uapi --user=example StatsBar get_stats display=perlversion%7Coperatingsystem warnings=0 warninglevel=high warnout=0 infinityimg=%2Fhome%2Fexample%2Finfinity.pnginfinitylang=&quot;infinity&quot; rowcounter=even
+Styles current 
+Styles list
+Styles set_default type=reseller name=example
+Styles update type=reseller name=example
+Themes get_theme_base
+Themes list show_mail_themes=1
+Themes update theme=paper_lantern
+TwoFactorAuth generate_user_configuration
+TwoFactorAuth get_user_configuration
+TwoFactorAuth remove_user_configuration
+TwoFactorAuth set_user_configuration secret=JBSWY3DPEHPK3PXP tfa_token=528112
+UserManager check_account_conflicts full_username=example1%40example.com
+UserManager create_user alternate_email=robert%40example.com domain=example.com password=12345luggage real_name='Bob Doe' send_invite=0 services.email.enabled=1 services.email.quota=2 services.ftp.enabled=1 services.ftp.homedir=/bob services.webdisk.enabled=1 services.webdisk.private=0 services.webdisk.homedir=/bob services.webdisk.perms=0 type=sub username=bob
+UserManager delete_user username=example1 domain=example.com
+UserManager dismiss_merge username=example1 domain=example.com services.ftp.dismiss=1
+UserManager edit_user alternate_email=robert%40example.com domain=example.com password=12345luggage real_name='Bob Doe' services.email.enabled=1 services.email.quota=2 services.ftp.enabled=1 services.ftp.homedir=%2Fbob services.webdisk.enabled=1 services.webdisk.private=0 services.webdisk.homedir=\/bob services.webdisk.perms=0 type=sub username=example1
+UserManager list_users
+UserManager lookup_user guid=EXAMPLE1%3AEXAMPLE.COM%3A564CD663%3AFE50072F2620B50988EA4E5F46022546FBE6BDDE3C36C2F2534F4967C661EC37
+UserManager merge_service_account username=example1 domain=example.com services.email.merge=1 services.ftp.merge=1 services.webdisk.merge=1
+UserManager unlink_service_account username=example1 domain=example.com service=ftp
+WebDisk set_homedir user=example1%40example.com homedir=example1
+WebDisk set_password user=example1%40example.com password=12345luggage enabledigest=0
+WebDisk set_permissions user=example1%40example.com perms=rw
+WebVhosts list_domains
+cPAddons get_available_addons
+cPGreyList disable_all_domains
+cPGreyList disable_domains domains=example.com%7Cexample1.com
+cPGreyList enable_all_domains
+cPGreyList enable_domains domains=example.com%7Cexample1.com
+cPGreyList has_greylisting_enabled
+cPGreyList list_domains
