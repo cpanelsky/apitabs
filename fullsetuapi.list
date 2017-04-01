@@ -9,7 +9,7 @@ Branding get_applications app_keys=addon_domains,ftp_accounts,anonymous_ftp
 Branding get_available_applications
 Branding get_information_for_applications docroot=\/usr\/local\/cpanel\/base\/webmail\/paper_lantern app_keys=email_filters 
 Branding image imagefile=image needfile=0 nomagic=0 reqext=.png skip_logo_check=0
-uapi  Branding include file=dynamiccontent.html skipdefault=0 raw=0 
+Branding include file=dynamiccontent.html skipdefault=0 raw=0 
 Branding spritelist img=getstart image=getstart imgtype=icon method=skip_filetype_gif subtype=img
 CacheBuster read
 CacheBuster update
@@ -195,7 +195,7 @@ Mysql get_server_information
 Mysql locate_server
 Mysql rename_database oldname=mydb newname=newlyrenamed
 Mysql rename_user oldname=dbuser newname=mynewusername
---uapi -- Mysql repair_database name=example_test
+Mysql repair_database name=example_test
 Mysql revoke_access_to_database user=dbuser database=mydb
 Mysql set_password user=dbuser password=12345luggage
 Mysql set_privileges_on_database user=dbuser database=mydb privileges=DELETE,UPDATE,CREATE,ALTER
@@ -258,7 +258,7 @@ Session create_temp_user
 SiteTemplates list_site_templates
 SiteTemplates list_user_settings
 SiteTemplates publish target=%2Fhome%2Fexample%2Fpublic_html source=%2Fusr%2Flocal%2Fcpanel%2Fetc%2Fsite_templates%2Funder_construction sitename='My Website' description='I have a website now.'
-uapi --user=example StatsBar get_stats display=perlversion%7Coperatingsystem warnings=0 warninglevel=high warnout=0 infinityimg=%2Fhome%2Fexample%2Finfinity.pnginfinitylang=&quot;infinity&quot; rowcounter=even
+StatsBar get_stats display=perlversion%7Coperatingsystem warnings=0 warninglevel=high warnout=0 infinityimg=%2Fhome%2Fexample%2Finfinity.pnginfinitylang=&quot;infinity&quot; rowcounter=even
 Styles current 
 Styles list
 Styles set_default type=reseller name=example
