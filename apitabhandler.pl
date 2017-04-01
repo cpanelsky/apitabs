@@ -28,7 +28,7 @@ sub doTabApi {
         my @fullLines = <FULLINPUTFILE>;
         close(FULLINPUTFILE);
         foreach my $fullLine (@fullLines) {
-            if ( $apiTabbed == "whmapi1" && $fullLine =~ /^$cur$/ ) {
+            if ( $apiTabbed =~ /whmapi1/ && $fullLine =~ /^$cur$/ ) {
                 print $cur . $docsURL . $cur;
             }
             else {
