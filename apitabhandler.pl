@@ -3,7 +3,6 @@
 foreach $arg (@ARGV) { $args = $args . " " . $arg; }
 my $apiTabbed = @ARGV[0];
 
-#print "$apiTabbed";
 
 if ( $apiTabbed =~ "uapi" ) {
     &doUAPI();
@@ -18,7 +17,7 @@ else {
 }
 
 sub doUAPI {
-    open( INPUTFILE, "</root/.cpanel/uapi.list" ) or die "$!";
+ open( INPUTFILE, "</root/.cpanel/uapi.list" ) or die "$!";
     @lines = <INPUTFILE>;
     close(INPUTFILE);
     if ( $args =~ /.*cur=(.*)$/ ) {
@@ -26,14 +25,21 @@ sub doUAPI {
         foreach my $line (@lines) {
             if ( $line =~ /^$cur.*/ ) {
                 if ( $line =~ m/^$cur$/ ) {
-                    my ( $moduleref, $funcref ) = split /-/, $cur;
-                    print
-"$moduleref $funcref --user=\$userName # https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+$moduleref%3A%3A$funcref\n";
-                }
-                else {
-                    if ( $cur != ~m/^\s$/ ) {
-                        print "$line";
-                    }
+                       open( FULLINPUTFILE, "</root/.cpanel/fullsetuapi.list" ) or die "$!";
+                      @fullLines = <FULLINPUTFILE>;
+                      close(FULLINPUTFILE);
+                      foreach my $fullLine (@fullLines) {
+                        if ( $fullLine =~ m/^$cur$/ )  {
+                            print " --user=\$userName $cur # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+$cur";
+                        }  else {
+                            $cur =~ s/-/ /;
+                          if ( $fullLine =~ /^$cur.*/ ) {
+                          chomp($fullLine);
+			                    $cur =~ s/ /%3A%3A/;
+                          print " --user=\$userName $fullLine  # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+$cur";
+                                        }
+                          }
+                     }
                 }
             }
         }
@@ -49,14 +55,21 @@ sub doCPAPI2 {
         foreach my $line (@lines) {
             if ( $line =~ /^$cur.*/ ) {
                 if ( $line =~ m/^$cur$/ ) {
-                    my ( $moduleref, $funcref ) = split /-/, $cur;
-                    print
-"$moduleref $funcref --user=\$userName # https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+$moduleref%3A%3A$funcref\n";
-                }
-                else {
-                    if ( $cur != ~m/^\s$/ ) {
-                        print "$line";
-                    }
+		       open( FULLINPUTFILE, "</root/.cpanel/fullsetcpapi2.list" ) or die "$!";
+                      @fullLines = <FULLINPUTFILE>;
+                      close(FULLINPUTFILE);
+                      foreach my $fullLine (@fullLines) {
+                        if ( $fullLine =~ m/^$cur$/ )  {
+                            print " --user=\$userName $cur # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+$cur";
+                        }  else {
+			                     $cur =~ s/-/ /;
+                          if ( $fullLine =~ /^$cur.*/ ) {
+                          chomp($fullLine);
+                          $cur =~ s/ /%3A%3A/;
+                          print " --user=\$userName $fullLine  # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+$cur";
+                                    }
+			                       }
+		                  }
                 }
             }
         }
@@ -64,26 +77,27 @@ sub doCPAPI2 {
 }
 
 sub doWHMAPI1 {
-
     open( INPUTFILE, "</root/.cpanel/whmapi1.list" ) or die "$!";
     @lines = <INPUTFILE>;
     close(INPUTFILE);
-
     if ( $args =~ /.*cur=(.*)$/ ) {
         my $cur = $1;
         foreach my $line (@lines) {
-            if ( $line =~ /^$cur.*/ ) {
-                if ( $line =~ m/^$cur$/ ) {
-                    print
-"$cur # https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+$line\n";
-                }
-                else {
-                    if ( $cur != ~m/^\s$/ ) {
-                        print "$line";
-                    }
-                }
+            if ( $line =~ /^$cur$/ ) {
+		      open( FULLINPUTFILE, "</root/.cpanel/fullsetwhmapi1.list" ) or die "$!";
+		      @fullLines = <FULLINPUTFILE>;
+		      close(FULLINPUTFILE);
+		      foreach my $fullLine (@fullLines) {
+			       if ( $fullLine =~ m/^$cur$/ )  {
+	                    print "$cur # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+$cur";
+			            }  else {
+			               if ( $fullLine =~ /^$cur.*/ ) {
+			                chomp($fullLine);
+                    	print "$fullLine  # cPanel Documentation #  https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+$cur";
+					                 }
+				              }
+			           }
             }
         }
     }
-
 }
