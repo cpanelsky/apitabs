@@ -6,12 +6,10 @@ my $apiTabbed = @ARGV[0];
 
 if ( $apiTabbed =~ "uapi" ) {
      $docsURL="  ## Documentation -> https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+";
-}
-else {
+} else {
     if ( $apiTabbed =~ "cpapi2" ) {
         $docsURL="  ## Documentation -> https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+";
-    }
-    else {
+    } else {
         $docsURL="  ## Documentation -> https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+";
     }
 }
