@@ -20,7 +20,8 @@ $apiFuncList = "/root/.cpanel/" . $apiTabbed . ".list";
 $apiFullList = "/root/.cpanel/fullset" . $apiTabbed . ".list";
 
 sub doTabApi {
- open( INPUTFILE, $apiFuncList ) or die "$!";
+    
+    open( INPUTFILE, $apiFuncList ) or die "$!";
     @lines = <INPUTFILE>;
     close(INPUTFILE);
     if ( $args =~ /.*cur=(.*)$/ ) {
@@ -50,4 +51,5 @@ sub doTabApi {
         }
     }
 }
+
 &doTabApi();
