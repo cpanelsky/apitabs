@@ -42,27 +42,62 @@ complete -F _whmapi1 whmapi1' > /etc/bash_completion.d/cpanelwhmapi1.bash
 
 echo -e '_cpapi2()
 {
+
+  COMPREPLY=()
   ourAPI="cpapi2";
   local cur=${COMP_WORDS[COMP_CWORD]}
-  if grep -q "^$cur$" /root/.cpanel/cpapi2.list
-    then
-       COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
-     else 
-      COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/cpapi2.list)" -- $cur))
-  fi
+  local prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+     if grep -q "^$cur$" /root/.cpanel/cpapi2.list
+      then
+         COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
+       else 
+        COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/cpapi2.list)" -- $cur))
+     fi
+
+     if [[ ${prev} == "user"* ]]
+      then
+        COMPREPLY=( $(compgen -W "$(awk -F': ' '{print $2}' /etc/trueuserdomains )" -- $cur ))
+     fi
+
+     if [[ ${prev} == "domain"* ]]
+      then
+       userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
+       COMPREPLY=( $(compgen -W "$(awk -F':' '{if (/: '$userArgName'==/) print $1}' /etc/userdatadomains )" -- $cur ))
+     fi
+
+
 }
 complete -F _cpapi2 cpapi2' > /etc/bash_completion.d/cpanelcpapi2.bash
 
+
 echo -e '_uapi()
 {
+
+  COMPREPLY=()
   ourAPI="uapi";
   local cur=${COMP_WORDS[COMP_CWORD]}
-  if grep -q "^$cur$" /root/.cpanel/uapi.list
-    then
-       COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
-     else 
-      COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/uapi.list)" -- $cur))
-  fi
+  local prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+     if grep -q "^$cur$" /root/.cpanel/uapi.list
+      then
+         COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
+       else 
+        COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/uapi.list)" -- $cur))
+     fi
+
+     if [[ ${prev} == "user"* ]]
+      then
+        COMPREPLY=( $(compgen -W "$(awk -F': ' '{print $2}' /etc/trueuserdomains )" -- $cur ))
+     fi
+
+     if [[ ${prev} == "domain"* ]]
+      then
+       userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
+       COMPREPLY=( $(compgen -W "$(awk -F':' '{if (/: '$userArgName'==/) print $1}' /etc/userdatadomains )" -- $cur ))
+     fi
+
+
 }
 complete -F _uapi uapi' > /etc/bash_completion.d/cpaneluapi.bash
 
