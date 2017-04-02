@@ -55,7 +55,7 @@ echo -e '_cpapi2()
         COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/cpapi2.list)" -- $cur))
      fi
 
-     if [[ ${prev} == "user"* ]]
+     if [[ ${prev} == "--user"* ]]
       then
         COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
@@ -82,7 +82,7 @@ echo -e '_uapi()
         COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/uapi.list)" -- $cur))
      fi
 
-     if [[ ${prev} == "user"* ]]
+     if [[ ${prev} == "--user"* ]]
       then
         COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
