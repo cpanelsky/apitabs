@@ -100,6 +100,7 @@ echo -e '_uapi()
 }
 complete -F _uapi uapi' > /etc/bash_completion.d/cpaneluapi.bash
 
+
 cpapiVar=$(/usr/local/cpanel/3rdparty/bin/perl -MCpanel::Template::Plugin::API_Shell -e 'our @apis = (\&Cpanel::Template::Plugin::API_Shell::api2_functions, \&Cpanel::Template::Plugin::API_Shell::whm1_functions, \&Cpanel::Template::Plugin::API_Shell::uapi_functions);  my @elemV =  (0) ; foreach (@elemV) { apiC($_) ;} sub apiC {if($_ == 1){$currentApi="whm1 "}else{if($_ == 2){$currentApi="UAPI "} else {$currentApi="cpapi2 "}}; foreach ( @apis[@_]->() ) { my $snipString = "@$_"; $snipString =~ (s/ /\n/g);  $snipString =~ (s/::/\-/g); print "$snipString";}}' )
 echo $cpapiVar > /root/.cpanel/cpapi2.list
 sed -i 's/ /\n/g' /root/.cpanel/cpapi2.list
