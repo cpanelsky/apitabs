@@ -8,6 +8,7 @@ my $apiTabbed = @ARGV[0];
 foreach my $arg (@ARGV) { $args = $args . " " . $arg; }
 
 my $apiFullList = "/root/.cpanel/fullset" . $apiTabbed . ".list";
+my $apiFuncList = "/root/.cpanel/" . $apiTabbed . ".list";
 
 if ( $apiTabbed =~ "uapi" ) {
     $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+";
@@ -23,13 +24,13 @@ else {
 
 sub doTabApi {
     if ( $args =~ /.*cur=(.*)$/ ) {
-        my $cur = $1;
-        open( FULLINPUTFILE, $apiFullList ) or die "$!";
-        my @fullLines = <FULLINPUTFILE>;
-        close(FULLINPUTFILE);
-        foreach my $fullLine (@fullLines) {
-            if ( $apiTabbed =~ /whmapi1/ && $fullLine =~ /^$cur$/ ) {
-                print $cur . $docsURL . $cur;
+      my $cur = $1;
+      open(FULLINPUTFILE, $apiFullList) or open(FULLINPUTFILE, $apiFuncList) or die "No $apiFullList or $apiFuncList\n";
+      my @fullLines = <FULLINPUTFILE>;
+      close(FULLINPUTFILE);
+      foreach my $fullLine (@fullLines) {
+         if ( $apiTabbed =~ /whmapi1/ && $fullLine =~ /^$cur$/ ) {
+              print $cur . $docsURL . $cur;
             }
             else {
                 $cur =~ s/-/\ /;
