@@ -57,19 +57,18 @@ echo -e '_cpapi2()
 
      if [[ ${prev} == "user"* ]]
       then
-        COMPREPLY=( $(compgen -W "$(awk -F': ' '{print $2}' /etc/trueuserdomains )" -- $cur ))
+        COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
 
      if [[ ${prev} == "domain"* ]]
       then
        userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
-       COMPREPLY=( $(compgen -W "$(awk -F':' '{if (/: '$userArgName'==/) print $1}' /etc/userdatadomains )" -- $cur ))
+       COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
 
 
 }
 complete -F _cpapi2 cpapi2' > /etc/bash_completion.d/cpanelcpapi2.bash
-
 
 echo -e '_uapi()
 {
@@ -88,13 +87,13 @@ echo -e '_uapi()
 
      if [[ ${prev} == "user"* ]]
       then
-        COMPREPLY=( $(compgen -W "$(awk -F': ' '{print $2}' /etc/trueuserdomains )" -- $cur ))
+        COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
 
      if [[ ${prev} == "domain"* ]]
       then
        userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
-       COMPREPLY=( $(compgen -W "$(awk -F':' '{if (/: '$userArgName'==/) print $1}' /etc/userdatadomains )" -- $cur ))
+       COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
 
 
