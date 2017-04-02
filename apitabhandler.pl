@@ -4,6 +4,7 @@ use strict;
 my $args;
 my $docsURL;
 my $apiTabbed = @ARGV[0];
+my $cur;
 
 foreach my $arg (@ARGV) { $args = $args . " " . $arg; }
 
@@ -22,15 +23,20 @@ else {
     }
 }
 
+
+if ( $args =~ /.*cur=(.*)$/ ) {
+	
+     $cur = $1;
+     &doTabApi();
+}
+
 sub doTabApi {
-    if ( $args =~ /.*cur=(.*)$/ ) {
-      my $cur = $1;
-      open(FULLINPUTFILE, $apiFullList) or open(FULLINPUTFILE, $apiFuncList) or die "No $apiFullList or $apiFuncList\n";
-      my @fullLines = <FULLINPUTFILE>;
-      close(FULLINPUTFILE);
-      foreach my $fullLine (@fullLines) {
-         if ( $apiTabbed =~ /whmapi1/ && $fullLine =~ /^$cur$/ ) {
-              print $cur . $docsURL . $cur;
+       open(FULLINPUTFILE, $apiFullList) or open(FULLINPUTFILE, $apiFuncList) or die "No $apiFullList or $apiFuncList\n";
+       my @fullLines = <FULLINPUTFILE>;
+       close(FULLINPUTFILE);
+       foreach my $fullLine (@fullLines) {
+           if ( $apiTabbed =~ /whmapi1/ && $fullLine =~ /^$cur$/ ) {
+                print $cur . $docsURL . $cur;
             }
             else {
                 $cur =~ s/-/\ /;
@@ -38,11 +44,8 @@ sub doTabApi {
                 $holder =~ s/ /%3A%3A/;
                 if ( $fullLine =~ /^$cur\s/ ) {
                     chomp($fullLine);
-                    print " --user=\$userName $fullLine" . $docsURL . $holder;
+                    print "--user \$userName $fullLine" . $docsURL . $holder;
                 }
             }
         }
-    }
 }
-
-&doTabApi();
