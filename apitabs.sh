@@ -51,7 +51,7 @@ echo -e '_cpapi2()
      if grep -q "^$cur$" /root/.cpanel/cpapi2.list
       then
          COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
-       else 
+       else
         COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/cpapi2.list)" -- $cur))
      fi
 
@@ -59,14 +59,11 @@ echo -e '_cpapi2()
       then
         COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
-
      if [[ ${prev} == "domain"* ]]
       then
-       userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
+       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=[\s])" <(echo $COMP_LINE ) )   )
        COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
-
-
 }
 complete -F _cpapi2 cpapi2' > /etc/bash_completion.d/cpanelcpapi2.bash
 
@@ -81,7 +78,7 @@ echo -e '_uapi()
      if grep -q "^$cur$" /root/.cpanel/uapi.list
       then
          COMPREPLY=$(/usr/bin/apitabhandler.pl $ourAPI cur=$cur)
-       else 
+       else
         COMPREPLY=( $(compgen -W "$(cat /root/.cpanel/uapi.list)" -- $cur))
      fi
 
@@ -89,14 +86,11 @@ echo -e '_uapi()
       then
         COMPREPLY=( $(compgen -W "$(awk -F'\'': '\'' '\''{print $2}'\'' /etc/trueuserdomains )" -- $cur ))
      fi
-
      if [[ ${prev} == "domain"* ]]
       then
-       userArgName=$( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=\s)" <(echo $COMP_LINE ) )
+       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=[\s])" <(echo $COMP_LINE ) )   )
        COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
-
-
 }
 complete -F _uapi uapi' > /etc/bash_completion.d/cpaneluapi.bash
 
