@@ -10,22 +10,23 @@ foreach my $arg (@ARGV) { $args = $args . " " . $arg; }
 
 my $apiFullList = "/root/.cpanel/fullset" . $apiTabbed . ".list";
 my $apiFuncList = "/root/.cpanel/" . $apiTabbed . ".list";
+my $docsBase    = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/";
+
 
 if ( $apiTabbed =~ "uapi" ) {
-    $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/UAPI+Functions+-+";
-}
-else {
-    if ( $apiTabbed =~ "cpapi2" ) {
-        $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/cPanel+API+2+Functions+-+";
+    $docsURL = $docsBase . "UAPI+Functions+-+";
+  } 
+    else {
+        if ( $apiTabbed =~ "cpapi2" ) {
+        $docsURL = $docsBase . "cPanel+API+2+Functions+-+";
     }
     else {
-        $docsURL = "  ## Documentation -> https://documentation.cpanel.net/display/SDK/WHM+API+1+Functions+-+";
+        $docsURL = $docsBase . "WHM+API+1+Functions+-+";
     }
 }
 
 
 if ( $args =~ /.*cur=(.*)$/ ) {
-	
      $cur = $1;
      &doTabApi();
 }
@@ -45,7 +46,7 @@ sub doTabApi {
                 if ( $fullLine =~ /^$cur\s/ ) {
                     chomp($fullLine);
                     print "--user \$userName $fullLine" . $docsURL . $holder;
-                }
-            }
-        }
+              }
+         }
+    }
 }
