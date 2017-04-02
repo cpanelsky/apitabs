@@ -61,7 +61,7 @@ echo -e '_cpapi2()
      fi
      if [[ ${prev} == "domain"* ]]
       then
-       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=[\s])" <(echo $COMP_LINE ) )   )
+       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z\-\.\_].*(?=[\s])" <(echo $COMP_LINE ) )   )
        COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
 }
@@ -88,7 +88,7 @@ echo -e '_uapi()
      fi
      if [[ ${prev} == "domain"* ]]
       then
-       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z].*(?=[\s])" <(echo $COMP_LINE ) )   )
+       userArgName=$(  awk '\''{print $1}'\''  <( grep -oP "(?<=user.)[0-9a-zA-Z\-\.\_].*(?=[\s])" <(echo $COMP_LINE ) )   )
        COMPREPLY=( $(compgen -W "$(awk -F'\'':'\'' '\''{if (/: '\''$userArgName'\''==/) print $1}'\'' /etc/userdatadomains )" -- $cur ))
      fi
 }
